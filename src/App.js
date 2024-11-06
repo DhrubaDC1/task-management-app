@@ -24,6 +24,7 @@ const Card = ({ clientName, description, progress, imgInfo, date }) => {
 };
 
 function App() {
+  let count = 0;
   const clients = [
     {
       clientName: 'Sadik Istiak',
@@ -87,8 +88,13 @@ function App() {
     <div className='w-full h-screen flex flex-row overflow-x-auto overflow-y-hidden'>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
         <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="cross.png" alt="" srcset="" />
           <p>Incomplete</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.map((client, index) => (
@@ -104,9 +110,14 @@ function App() {
         </div>
       </div>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
-        <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+      <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="todo.png" alt="" srcset="" />
           <p>To Do</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.slice(0, 7).map((client, index) => (
@@ -122,9 +133,14 @@ function App() {
         </div>
       </div>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
-        <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+      <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="doing.png" alt="" srcset="" />
           <p>Doing</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.slice(0, 9).map((client, index) => (
@@ -140,9 +156,14 @@ function App() {
         </div>
       </div>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
-        <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+      <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="under_review.png" alt="" srcset="" />
           <p>Under Review</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.slice(0, 9).map((client, index) => (
@@ -158,9 +179,14 @@ function App() {
         </div>
       </div>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
-        <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+      <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="completed.png" alt="" srcset="" />
           <p>Completed</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.slice(0, 7).map((client, index) => (
@@ -176,9 +202,14 @@ function App() {
         </div>
       </div>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
-        <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+      <div className='flex h-[7%] flex-row justify-between px-2 py-4'>
+          <div className='flex flex-row gap-2'>
+          <img src="overdue.png" alt="" srcset="" />
           <p>Overdue</p>
-          <p>0</p>
+          </div>
+          <div className='bg-gray-400 p-2 flex justify-center items-center'>
+            <p>{count}</p>
+          </div>
         </div>
         <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
           {clients.slice(0, 10).map((client, index) => (
