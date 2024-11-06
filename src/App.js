@@ -97,7 +97,7 @@ function App() {
   ];
 
   return (
-    <div className='w-full h-screen flex flex-row overflow-x-auto overflow-y-hidden'>
+    <div className='w-full h-screen flex flex-row scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-x-auto scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-hidden'>
       <div className='min-w-[18%] bg-gray-300 mx-3 my-4'>
         <div className='flex h-[7%] flex-row justify-between p-4'>
           <div className='flex flex-row gap-2 justify-center items-center font-semibold'>
@@ -108,7 +108,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-auto'>
           {clients.map((client, index) => (
             <Card
               key={index}
@@ -130,7 +130,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-auto'>
           {clients.slice(0, 7).map((client, index) => (
             <Card
               key={index}
@@ -152,7 +152,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-auto'>
           {clients.slice(0, 9).map((client, index) => (
             <Card
               key={index}
@@ -174,7 +174,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-auto'>
           {clients.slice(0, 9).map((client, index) => (
             <Card
               key={index}
@@ -196,7 +196,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 overflow-y-auto'>
           {clients.slice(0, 7).map((client, index) => (
             <Card
               key={index}
@@ -218,7 +218,7 @@ function App() {
             <p>{count}</p>
           </div>
         </div>
-        <div className='flex flex-col gap-2 h-[93%] overflow-y-auto'>
+        <div className='flex flex-col gap-2 h-[93%] scrollbar-thin scrollbar-thumb-blue-950 scrollbar-track-gray-200 scrollbar-thumb-rounded overflow-y-auto'>
           {clients.slice(0, 10).map((client, index) => (
             <Card
               key={index}
