@@ -1,6 +1,25 @@
 import './App.css';
-import FilePickerModal from './components/filePicker';
+import FileDetailsModal from './components/fileDetails';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const uploadFile = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file); // Append the file to the FormData object
+
+  try {
+      // Send a POST request to the API with the file
+      const response = await axios.post('http://localhost:3000/api/upload', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data', // Set the content type for file upload
+          }
+      });
+      
+      console.log('File uploaded successfully:', response.data);
+  } catch (error) {
+      console.error('Error uploading file:', error);
+  }
+};
 
 const Card = ({ clientName, description, progress, date, fileCount,  handleFileUpload }) => {
   return (
@@ -99,17 +118,48 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   let count = 0;
   const [files, setFiles] = useState([]);
+  const [fileCount, setFileCount] = useState(0);
+
+
+  const downloadFile = async (fileName) => {
+    
+    try {
+      // Make the GET request to fetch the file from the server
+      const response = await axios.get(`http://localhost:3000/api/files/${fileName}`, {
+        responseType: 'blob', // Important for downloading files
+      });
+
+      // Create a URL for the file from the response data (which is a blob)
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      
+      // Create a link element, set the download attribute, and trigger the download
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', fileName); // Use the filename from input
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   
   useEffect(() => {
-    console.log(files);
+    axios.get('http://localhost:3000/api/files/count').then((res) => {
+      setFileCount(res.data.fileCount);
+    })
   }, [files]);
+
   const handleFileUpload = () => {
     const input = document.createElement('input');
     console.log("🚀 ~ handleFileUpload ~ input:", input)
     input.type = 'file';
     input.multiple = true;
-    input.onchange = (e) => {
+    input.onchange = async (e) => {
       let file = e.target.files;
+      for (let i = 0; i < file.length; i++) {
+        await uploadFile(file[i]);
+      }
       file = Object.values(file)
       setFiles(file);
       setIsModalOpen(true);
@@ -137,7 +187,7 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
@@ -161,7 +211,7 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
@@ -185,7 +235,7 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
@@ -209,7 +259,7 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
@@ -233,7 +283,7 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
@@ -257,16 +307,17 @@ function App() {
               description={client.description}
               progress={client.progress}
               date={client.date}
-              fileCount={files.length}
+              fileCount={fileCount}
               handleFileUpload = {handleFileUpload}
             />
           ))}
         </div>
       </div>
-      <FilePickerModal
+      <FileDetailsModal
         isOpen={isModalOpen}
         onClose={()=>setIsModalOpen(false)}
         files={files}
+        downloadFile={downloadFile}
       />
     </div>
   );

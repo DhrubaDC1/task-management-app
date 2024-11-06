@@ -1,10 +1,8 @@
-// FilePickerModal.js
 import React from "react";
 
-function FilePickerModal({ isOpen, onClose, files }) {
-  console.log(files);
+function FileDetailsModal({ isOpen, onClose, files, downloadFile }) {
 
-  if (!isOpen) return null; // Don't render if the modal is closed
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -18,6 +16,7 @@ function FilePickerModal({ isOpen, onClose, files }) {
                 <tr>
                   <th className="px-4 py-2 border">File Name</th>
                   <th className="px-4 py-2 border">Extension</th>
+                  <th className="px-4 py-2 border"></th>
                 </tr>
               </thead>
               <tbody>
@@ -28,6 +27,14 @@ function FilePickerModal({ isOpen, onClose, files }) {
                     </td>
                     <td className="px-4 py-2 border">
                       {file.name.split(".")[1]}
+                    </td>
+                    <td className="px-4 py-2 border">
+                      <button
+                        className="bg-green-500 text-white px-4 py-2 rounded"
+                        onClick={() => downloadFile(file.name)}
+                      >
+                        Download
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -49,4 +56,4 @@ function FilePickerModal({ isOpen, onClose, files }) {
   );
 }
 
-export default FilePickerModal;
+export default FileDetailsModal;
