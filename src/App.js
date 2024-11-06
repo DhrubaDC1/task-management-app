@@ -9,7 +9,7 @@ const uploadFile = async (file) => {
 
   try {
       // Send a POST request to the API with the file
-      const response = await axios.post('http://localhost:3000/api/upload', formData, {
+      const response = await axios.post('https://task-management-app-backend-l87q.onrender.com/api/upload', formData, {
           headers: {
               'Content-Type': 'multipart/form-data', // Set the content type for file upload
           }
@@ -125,7 +125,7 @@ function App() {
     
     try {
       // Make the GET request to fetch the file from the server
-      const response = await axios.get(`http://localhost:3000/api/files/${fileName}`, {
+      const response = await axios.get(`https://task-management-app-backend-l87q.onrender.com/api/files/${fileName}`, {
         responseType: 'blob', // Important for downloading files
       });
 
@@ -145,7 +145,7 @@ function App() {
   };
   
   useEffect(() => {
-    axios.get('http://localhost:3000/api/files/count').then((res) => {
+    axios.get('https://task-management-app-backend-l87q.onrender.com/api/count').then((res) => {
       setFileCount(res.data.fileCount);
     })
   }, [files]);
